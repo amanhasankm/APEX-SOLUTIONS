@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Simple Webpage</title>
+  <style>
+    /* ===== CSS Styling ===== */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f9fd;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #333;
+      margin: 20px;
+    }
+
+    img {
+      width: 300px;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+
+    a {
+      display: inline-block;
+      margin: 10px;
+      color: #4CAF50;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    button {
+      background-color: #ff5722;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #e64a19;
+    }
+
+    footer {
+      margin-top: 30px;
+      background: #ddd;
+      padding: 10px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HTML Structure ===== -->
+  <header>
+    <h1>Welcome to My Webpage</h1>
+    <p>This webpage demonstrates HTML, CSS, and JavaScript basics.</p>
+  </header>
+
+  <main>
+    <p>Here’s an example of an image and a useful link:</p>
+    <img src="assets/apexsolutions.jpeg" alt="APEX Solutions Image">
+
+    <br>
+    <a href="https://apexplanet.in/" target="_blank">Learn More at APEX Planet</a>
+
+    <br><br>
+    <button onclick="showMessage()">Click Me!</button>
+  </main>
+
+  <footer>
+    &copy; 2025 My Simple Webpage | Made By AH
+  </footer>
+
+  <!-- ===== JavaScript Interactivity ===== -->
+  <script>
+    function showMessage() {
+      alert("Hello! You clicked the button 🎉");
+    }
+  </script>
+
+</body>
+</html>
