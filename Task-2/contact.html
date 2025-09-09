@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validation & Responsive Layout</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f9f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #2b6777;
+    }
+
+    /* Contact Form */
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+    }
+
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background: #2b6777;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1b4d5b;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+
+    #successMsg {
+      color: green;
+      margin-top: 10px;
+    }
+
+    /* Responsive Layout */
+    .container {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 20px;
+      width: 90%;
+      max-width: 1000px;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      background: #2b6777;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 8px 0;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .main {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 10px;
+    }
+
+    .content {
+      background: #c8d8e4;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: #2b6777;
+      color: white;
+      border-radius: 8px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        flex-direction: row;
+        justify-content: space-around;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>Contact Form</h2>
+
+  <form id="contactForm">
+    <input type="text" id="name" placeholder="Enter your name">
+    <span id="nameError" class="error"></span>
+
+    <input type="email" id="email" placeholder="Enter your email">
+    <span id="emailError" class="error"></span>
+
+    <textarea id="message" placeholder="Enter your message"></textarea>
+    <span id="messageError" class="error"></span>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="successMsg"></div>
+
+  <!-- Responsive Layout -->
+  <div class="container">
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </nav>
+
+    <div class="main">
+      <div class="content">Main Content Area</div>
+      <footer>Footer Section</footer>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    const message = document.getElementById('message');
+
+    const nameError = document.getElementById('nameError');
+    const emailError = document.getElementById('emailError');
+    const messageError = document.getElementById('messageError');
+    const successMsg = document.getElementById('successMsg');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      let valid = true;
+
+      // Reset messages
+      nameError.textContent = '';
+      emailError.textContent = '';
+      messageError.textContent = '';
+      successMsg.textContent = '';
+
+      // Name check
+      if (name.value.trim() === '') {
+        nameError.textContent = 'Name is required';
+        valid = false;
+      }
+
+      // Email check
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (email.value.trim() === '') {
+        emailError.textContent = 'Email is required';
+        valid = false;
+      } else if (!email.value.match(emailPattern)) {
+        emailError.textContent = 'Invalid email format';
+        valid = false;
+      }
+
+      // Message check
+      if (message.value.trim() === '') {
+        messageError.textContent = 'Message is required';
+        valid = false;
+      }
+
+      if (valid) {
+        successMsg.textContent = 'Form submitted successfully ✅';
+        form.reset();
+      }
+    });
+  </script>
+</body>
+</html>
